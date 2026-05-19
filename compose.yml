@@ -1,0 +1,14 @@
+services:
+  go:
+    build: .
+    working_dir: /app
+    volumes:
+      # Live-mount the source so edits are picked up without rebuilding.
+      - .:/app
+      # Persist the module cache between runs.
+      - go-mod-cache:/go/pkg/mod
+    # Keep the container alive so you can exec into it.
+    command: sleep infinity
+
+volumes:
+  go-mod-cache:
