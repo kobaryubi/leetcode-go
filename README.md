@@ -33,3 +33,26 @@ Stop the container when done:
 ```sh
 docker compose down
 ```
+
+## Tests
+
+Each problem lives in its own directory (e.g. `0006-zigzag-conversion/`)
+with a solution file and a table-driven `_test.go` file.
+
+Run every test in the repo:
+
+```sh
+go test ./...
+```
+
+Run the tests for a single problem:
+
+```sh
+go test ./0006-zigzag-conversion/
+```
+
+Add `-v` to see each case, or `-run` to filter by name:
+
+```sh
+go test -v -run TestConvert ./0006-zigzag-conversion/
+```
