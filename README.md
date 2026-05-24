@@ -56,3 +56,22 @@ Add `-v` to see each case, or `-run` to filter by name:
 ```sh
 go test -v -run TestConvert ./0006-zigzag-conversion/
 ```
+
+## Running a program
+
+For directories with a `package main` and a `main()` function (e.g.
+`learn-fuzz/`), compile and run in one step:
+
+```sh
+go run ./learn-fuzz
+```
+
+The path is the package import path — `./` makes it relative to the repo
+root. From inside the directory, `go run .` works the same way.
+
+Build a standalone binary instead:
+
+```sh
+go build ./learn-fuzz   # produces ./learn-fuzz
+./learn-fuzz
+```
