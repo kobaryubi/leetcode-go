@@ -12,8 +12,10 @@ func convert(s string, numRows int) string {
 		return s
 	}
 
-	batchCount := len(s) / (numRows + numRows - 2)
-	batchRest := len(s) % (numRows + numRows - 2)
+	cycle := numRows + numRows - 2
+
+	batchCount := len(s) / cycle
+	batchRest := len(s) % cycle
 	if (batchRest > 0) {
 		batchCount++
 	}
@@ -26,20 +28,20 @@ func convert(s string, numRows int) string {
 	done := false
 	for i := 0; i < batchCount; i++ {
 		for j := 0; j < numRows; j++ {
-			if (numRows + numRows - 2) * i + j == len(s) {
+			if cycle * i + j == len(s) {
 				done = true
 				break
 			}
-			zigzag[j][i * (numRows - 1)] = string(s[(numRows + numRows - 2) * i + j])
+			zigzag[j][i * (numRows - 1)] = string(s[cycle * i + j])
 		}
 		if (done) {
 			break
 		}
 		for j := 0; j < numRows - 2; j++ {
-			if (numRows + numRows - 2) * i + numRows + j == len(s) {
+			if cycle * i + numRows + j == len(s) {
 				break
 			}
-			zigzag[numRows - j - 2][i * (numRows - 1) + j + 1] = string(s[(numRows + numRows - 2) * i + numRows + j])
+			zigzag[numRows - j - 2][i * (numRows - 1) + j + 1] = string(s[cycle * i + numRows + j])
 		}
 	}
 
