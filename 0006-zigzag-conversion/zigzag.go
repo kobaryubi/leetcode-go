@@ -16,32 +16,32 @@ func convert(s string, numRows int) string {
 
 	batchCount := len(s) / cycle
 	batchRest := len(s) % cycle
-	if (batchRest > 0) {
+	if batchRest > 0 {
 		batchCount++
 	}
 
 	zigzag := make([][]string, numRows)
 	for i := range zigzag {
-		zigzag[i] = make([]string, batchCount * numRows)
+		zigzag[i] = make([]string, batchCount*numRows)
 	}
 
 	done := false
 	for i := 0; i < batchCount; i++ {
 		for j := 0; j < numRows; j++ {
-			if cycle * i + j == len(s) {
+			if cycle*i+j == len(s) {
 				done = true
 				break
 			}
-			zigzag[j][i * (numRows - 1)] = string(s[cycle * i + j])
+			zigzag[j][i*(numRows-1)] = string(s[cycle*i+j])
 		}
-		if (done) {
+		if done {
 			break
 		}
-		for j := 0; j < numRows - 2; j++ {
-			if cycle * i + numRows + j == len(s) {
+		for j := 0; j < numRows-2; j++ {
+			if cycle*i+numRows+j == len(s) {
 				break
 			}
-			zigzag[numRows - j - 2][i * (numRows - 1) + j + 1] = string(s[cycle * i + numRows + j])
+			zigzag[numRows-j-2][i*(numRows-1)+j+1] = string(s[cycle*i+numRows+j])
 		}
 	}
 
