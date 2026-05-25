@@ -57,6 +57,34 @@ Add `-v` to see each case, or `-run` to filter by name:
 go test -v -run TestConvert ./0006-zigzag-conversion/
 ```
 
+## Formatting
+
+Format Go source with `gofmt` (see https://pkg.go.dev/cmd/gofmt).
+
+`gofmt` takes file or directory paths (it recurses into directories on
+its own) — it does not understand the `./...` package pattern.
+
+List files that need formatting under the current directory:
+
+```sh
+gofmt -l .
+```
+
+Show the diff for one directory without writing:
+
+```sh
+gofmt -d ./0006-zigzag-conversion
+```
+
+Write formatting changes in place:
+
+```sh
+gofmt -w ./0006-zigzag-conversion
+```
+
+`go fmt ./...` is the package-aware wrapper that formats every package
+in the module — use this when you do want the `./...` pattern.
+
 ## Running a program
 
 For directories with a `package main` and a `main()` function (e.g.
