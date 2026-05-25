@@ -14,11 +14,7 @@ func convert(s string, numRows int) string {
 
 	cycle := numRows + numRows - 2
 
-	batchCount := len(s) / cycle
-	batchRest := len(s) % cycle
-	if batchRest > 0 {
-		batchCount++
-	}
+	batchCount := (len(s) + cycle - 1) / cycle
 
 	zigzag := make([][]string, numRows)
 	for i := range zigzag {
