@@ -41,10 +41,11 @@ func convert(s string, numRows int) string {
 		}
 	}
 
-	converted := ""
+	var converted strings.Builder
+	converted.Grow(len(s))
 	for i := 0; i < numRows; i++ {
-		converted += strings.Join(zigzag[i], "")
+		converted.WriteString(strings.Join(zigzag[i], ""))
 	}
 
-	return converted
+	return converted.String()
 }
