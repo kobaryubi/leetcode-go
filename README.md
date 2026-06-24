@@ -49,12 +49,14 @@ Run the tests for a single problem:
 
 ```sh
 go test ./0006-zigzag-conversion/
+go test ./0007-reverse-integer/
 ```
 
 Add `-v` to see each case, or `-run` to filter by name:
 
 ```sh
 go test -v -run TestConvert ./0006-zigzag-conversion/
+go test -v -run TestReverse ./0007-reverse-integer/
 ```
 
 ## Formatting
@@ -74,12 +76,14 @@ Show the diff for one directory without writing:
 
 ```sh
 gofmt -d ./0006-zigzag-conversion
+gofmt -d ./0007-reverse-integer
 ```
 
 Write formatting changes in place:
 
 ```sh
 gofmt -w ./0006-zigzag-conversion
+gofmt -w ./0007-reverse-integer
 ```
 
 `go fmt ./...` is the package-aware wrapper that formats every package
